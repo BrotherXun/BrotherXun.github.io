@@ -1,30 +1,30 @@
-<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>恋爱小屋</title><meta name="author" content="BrotherXun"><meta name="copyright" content="BrotherXun"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description"><link rel="shortcut icon" href="/img/%E5%9B%BE%E6%A0%87.jpg"><link rel="canonical" href="http://example.com/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: undefined,
-  translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":230},
   copy: {
-    success: 'Copy successfully',
-    error: 'Copy error',
-    noSupport: 'The browser does not support'
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
   },
   relativeDate: {
-    homepage: false,
-    post: false
+    homepage: true,
+    post: true
   },
-  runtime: '',
+  runtime: '天',
   dateSuffix: {
-    just: 'Just',
-    min: 'minutes ago',
-    hour: 'hours ago',
-    day: 'days ago',
-    month: 'months ago'
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
   },
   copyright: undefined,
   lightbox: 'fancybox',
-  Snackbar: undefined,
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-right"},
   source: {
     justifiedGallery: {
       js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
@@ -32,7 +32,7 @@
     }
   },
   isPhotoFigcaption: false,
-  islazyload: false,
+  islazyload: true,
   isAnchor: false,
   percent: {
     toc: true,
@@ -40,12 +40,12 @@
   },
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: 'Hexo',
+  title: '恋爱小屋',
   isPost: false,
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-09-24 11:56:20'
+  postUpdate: '2023-09-28 16:56:37'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -126,13 +126,17 @@
       win.activateLightMode = function () {
         document.documentElement.setAttribute('data-theme', 'light')
         if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
         }
       }
       const t = saveToLocal.get('theme')
     
-          if (t === 'dark') activateDarkMode()
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
           else if (t === 'light') activateLightMode()
+          else activateDarkMode()
         
       const asideStatus = saveToLocal.get('aside-status')
       if (asideStatus !== undefined) {
@@ -149,17 +153,129 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Hexo"><span class="site-name">Hexo</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/09/24/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2023-09-24T03:02:24.086Z" title="Created 2023-09-24 11:02:24">2023-09-24</time></span></div><div class="content">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick StartCreate a new post1$ hexo new &quot;My New Post&quot;
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/picture/%E5%9B%BE%E6%A0%87.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/picture/%E5%B0%81%E9%9D%A2.jpeg')"><nav id="nav"><span id="blog-info"><a href="/" title="恋爱小屋"><span class="site-name">恋爱小屋</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/comments/"><i class="fa-fw fas fa-envelope-open"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">恋爱小屋</h1><div id="site_social_icons"><a class="social-icon" href="https://github.com/BrotherXun" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:13011081255@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2023/09/15/%E5%90%88%E8%82%A5/" title="合肥"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../picture/%E5%90%88%E8%82%A5/loppy.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="合肥"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/09/15/%E5%90%88%E8%82%A5/" title="合肥">合肥</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-14T16:00:00.000Z" title="发表于 2023-09-15 00:00:00">2023-09-15</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-28T08:28:09.265Z" title="更新于 2023-09-28 16:28:09">2023-09-28</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a></span></div><div class="content">合肥这座普普通通的城市因为有宝宝的到来，也变得精彩且值得回忆
+过了一个究极美好的生日，最有氛围和体验的生日！！
+等秋招结束后再回来好好写一篇长文记录（🐦🐦🐦绝对不鸽）
+</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/05/30/%E6%89%AC%E5%B7%9E/" title="扬州"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../picture/%E6%89%AC%E5%B7%9E/%E7%98%A6%E8%A5%BF%E6%B9%961.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="扬州"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/05/30/%E6%89%AC%E5%B7%9E/" title="扬州">扬州</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-29T16:00:00.000Z" title="发表于 2023-05-30 00:00:00">2023-05-30</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-28T08:44:18.132Z" title="更新于 2023-09-28 16:44:18">2023-09-28</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a></span></div><div class="content">扬州5.26偷偷抵达跟宝宝说第二天早上才到，其实改签了当晚就到的高铁
 
-More info: Writing
-Run server1$ hexo server
+怎么可能放心你一个人到陌生的城市哇，肯定我先给你探路啦，知道你晚上没吃饭，去火锅店先占了个座位，就等你来了。
+5.27大运河博物馆齁贵的早茶文化忘了拍照了，宝宝还因此受了伤（9.15更新 到现在疤还没好！），可恶！
 
-More info: Server
-Generate static files1$ hexo generate
 
-More info: Generating
-Deploy to remote sites1$ hexo deploy
 
-More info: Deployment
-</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/24/hello-world/" title="Hello World">Hello World</a><time datetime="2023-09-24T03:02:24.086Z" title="Created 2023-09-24 11:02:24">2023-09-24</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">September 2023</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">1</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-09-24T03:56:20.479Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+历史专业的某人，说说博物馆参观的感受，写一篇1000字的观后感我明天检查。
+晚饭搞了顿正宗扬州炒饭试试吧
+确实好吃，鸡蛋做成丝状口感很好，准备下次试试200多一份的扬州炒饭
+
+想不到我们也有机会当一次特种兵，晚上又去瘦西湖夜游了
+
+
+
+图片拍起来有点阴间，但是肉眼看体验还不错的（晚上一个人也不敢来），走了一半实在特种兵不了了，从西门润了。
+5.28轻松悠闲去体验了下扬州的足浴，足疗阿姨竟然还会正骨，我都怕把我一招嘎了。
+晚上第一次吃到西塔老太太烤肉，真好吃！
+
+敬礼🫡
+
+异地真的好痛苦，平时照顾不到对方很难受，好不容易见一面都在算着还有多少时间要分别，真的太难熬啦，可惜实习没拿到上海的机会，唉
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/05/03/%E4%BA%91%E5%8D%97/" title="云南之行"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../picture/%E8%8F%A0%E8%90%9D%E8%BD%A6.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="云南之行"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/05/03/%E4%BA%91%E5%8D%97/" title="云南之行">云南之行</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-02T16:00:00.000Z" title="发表于 2023-05-03 00:00:00">2023-05-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-27T09:31:24.451Z" title="更新于 2023-09-27 17:31:24">2023-09-27</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a></span></div><div class="content">云南之行4.27晚 合肥集合吃烧烤哈啤酒，给宝宝和小张上了一课，两个小趴菜。
+4.28早 起飞🛫️
+经验教训：还是不能太相信小红书，这个顺风车（实际上为大巴车，黑车！）浪费我们宝贵的4个小时！！！
+4.28傍晚 到达大理论如何防止晒伤，请看下图
+
+本来心情因为顺风车搞的有点不开心，看到远处的云和夕阳一下就好多了，美好的云南之旅也正式开始。（车玻璃有点脏，这不重要）
+
+抵达世界最高城–大理古城
+
+4.29没有早晨今天租到了可可爱爱的菠萝车，给宝宝当一天专属司机
+开始环洱海自驾一圈
+第一站：龙龛古渡 看看美美的洱海
+
+小插曲：以为是太晒了所以车制冷很慢，结果是制冷剂没了，差点给我俩热死。
+第二站：喜洲古镇 差点被雨淋
+还好我们有小小菠萝车，唯一值得拍照留念的图如下：
+
+第三站：双廊古镇 菠萝车最大的考验
+从喜洲古镇去双廊古镇为了节约时间走了一段高速公路，小小菠萝车在时速100km&#x2F;h下方向盘疯狂抖动，有亿点恐怖。
+
+
+
+我来看看谁的脑门有我的大（技术专家的发际线）
+
+接下来让我们有请本次环洱海最辛苦的一员，菠萝车车
+
+都给我夸！
+可惜到达理想邦的时候已经关门了，在回去的路上天黑 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/03/03/%E4%B8%8A%E6%B5%B7/" title="桑海"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../picture/%E4%B8%8A%E6%B5%B7/%E8%BF%AA%E5%A3%AB%E5%B0%BC1.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="桑海"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/03/03/%E4%B8%8A%E6%B5%B7/" title="桑海">桑海</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-02T16:00:00.000Z" title="发表于 2023-03-03 00:00:00">2023-03-03</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-28T08:20:41.689Z" title="更新于 2023-09-28 16:20:41">2023-09-28</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a></span></div><div class="content">上海曾经我因为疫情防控讨厌上海，现在我因为一个人喜欢上海，城市不重要，重要的是你在乎的人在哪里。
+First Time3.3 桑海我来啦见到宝宝啦，开心开心开心开心
+外滩浅浅的打个卡
+
+3.4迪士尼迪士尼迪士尼迪士尼多图预警，文字无法描述的开心，看就完了。
+
+
+
+
+
+
+我们两只真的好随意，玩到下午我困的不行了还回民宿睡了会觉哈哈哈哈哈。
+但是机智的我还好前一天在淘宝上买了在线导览，听他的安排在大部队进入的时候我们就玩完了几个比较火的项目，然后一天看了四场花车，太值了。
+录了好多花车视频，笔记没法传视频，再学一下之后上传到相册里。
+最后晚上有点冷，而且也要做到地上有点难受，什么时候能够以贵宾的身份在最前排观看烟花！
+跟宝宝第一次来到世界上最快乐的地方，以后一定还要多来！
+3.5再见上海平常的小情侣周末，上海很好，下次再来啦！
+Second Time4.1胡汉三没想到吧 我胡汉三这么快就回来了，
+小情侣周末生活之看个脱口秀
+
+之吃个牛肉火锅
+
+之逛个南京路（人从众….)
+
+之外滩美景
+
+大批丧尸即将到来，快跑💨
+
+Third Time上海好久不见哇
+7.28抵达上海！帕蓝真好吃，好吃到忘 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2023/01/15/%E9%95%BF%E6%B2%99/" title="初见"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/../picture/%E9%95%BF%E6%B2%99/%E5%A5%BD%E7%9C%8B.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="初见"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/01/15/%E9%95%BF%E6%B2%99/" title="初见">初见</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-01-14T16:00:00.000Z" title="发表于 2023-01-15 00:00:00">2023-01-15</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-28T07:34:44.779Z" title="更新于 2023-09-28 15:34:44">2023-09-28</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a></span></div><div class="content">长沙生活不是一成不变的线，而是又精彩的点组成的，这个网站的制作目的是为了记录我和宝宝的点点滴滴，这是第一篇博客（9.15改）
+1.13网友见面会虽然天气不太好，但是也是一种别样的体验啦。
+
+先跟妹妹妹夫小喝一杯茶颜悦色，准备到点去接人。
+没想到吧，这位170的长腿冷面美女就是我将来的女朋友
+好家伙，头一晚就熬夜打麻将，很开心很兴奋。
+1.14闲逛前一天熬夜太晚，起来就直接到中午了，简单吃了一顿后就去逛商场了。
+
+晚上带将来的女朋友见了过去的儿子（羊崽），感谢羊夫妇的热情款待，羡慕小两口的幸福生活。
+
+吃完饭三对情侣各自在超级文和友里乱逛，可以排队太长没有坐到缆车。
+1.15橘子洲白了头北国风光，千里冰封，万里雪飘！
+南方也遇到了雪飘！谁说长沙不冷的，我长款羽绒服呢？（牵了手手，手和心都是暖暖的）
+ps：衣服太丑了，这位35+的大叔是谁啊
+美好的时光是短暂的，想到第二天就要解散了，根本舍不得回酒店，又在步行街逛了好久好久。
+
+
+1.16表白！送她去火车站，彼此确认了心意，我喜欢的人也喜欢我真的是太好啦，希望将来可以多多见面。
+</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2020/01/01/%E8%AE%A4%E9%94%99/" title="认错贴"><img class="post-bg" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="认错贴"></a></div><div class="recent-post-info"><a class="article-title" href="/2020/01/01/%E8%AE%A4%E9%94%99/" title="认错贴">认错贴</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-12-31T16:00:00.000Z" title="发表于 2020-01-01 00:00:00">2020-01-01</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-28T08:53:33.479Z" title="更新于 2023-09-28 16:53:33">2023-09-28</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E5%8F%8D%E6%80%9D/">反思</a></span></div><div class="content">反思记录下犯的错误，吸取教训将来不能再犯
+7.29号晚因为之前向宝宝隐瞒了那次喝通宵的经历
+反思：不应该隐瞒，宝宝宽宏大量，想多喝会酒跟宝宝直说就好。
+8.20号早因为前一晚没睡好，在早上醒了以后没有管宝宝自己有倒头睡了个回笼觉
+反思：要关注宝宝的心理，本来快要分别了宝宝就心理难受，因为跟她聊聊天，先哄她入睡。
+9.22号下午因为一句嘴贱的玩笑话把宝宝开心的心情破坏了，然后又让她产生了深深的误会。
+反思：发文字时不应该抖机灵，文字是冰冷的感受不到情感，很容易会产生误会。
+9.22号晚差点被分手了，我冤枉啦，冤死了。
+</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/picture/%E5%9B%BE%E6%A0%87.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">BrotherXun</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/BrotherXun"><i class="fab fa-github"></i><span>前往个人主页</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/BrotherXun" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:13011081255@163.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">高甜，单身狗快跑</div></div><div class="sticky_layout"></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By BrotherXun</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="25" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body></html>
